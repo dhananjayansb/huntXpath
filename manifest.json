@@ -1,16 +1,19 @@
 {
-  "name": "HuntX",
+  "name": "huntX",
   "description": "Xpath-Finder",
   "version": "1.0",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "128" : "assets/icon/32.png"
   },
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "permissions": 
   [
-    "<all_urls>",
     "contextMenus",
     "tabs",
+    "activeTab",
     "webNavigation"
   ],
   "content_scripts":
@@ -18,15 +21,12 @@
       {
         "matches":["<all_urls>"],
         "run_at":"document_start",
-        "js": ["app/src/content.js"]
+        "js": ["js/contentScript.js"]
       }
     ],
     "background":
     {
-      "persistent": false,
-      "scripts":[
-        "eventPage.js",
-        "app/src/content.js"
-      ]
+      "service_worker": "js/background.js",
+      "type": "module"
     }
 }
