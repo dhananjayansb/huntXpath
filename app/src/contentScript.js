@@ -29,6 +29,21 @@ function parseDOM() {
         idPattern = `//${tag}[@id='${idValue}']`;
         console.log(idPattern);
     }
+    let attributes = targetElement.attributes;
+    addAllXPathAttribute(attributes, tag)
+}
+
+function addAllXPathAttribute(attributes, tagName) {
+    console.log(attributes);
+    console.log(tagName);
+    Array.prototype.slice.call(attributes).forEach(element => {
+
+        let temp = `//${tagName}[@${element.name}='${element.value}']`;
+        let count = getCountofXPath(temp);
+        if (count == 1) {
+            console.log(temp);
+        }
+    });
 }
 
 function getCountofXPath(xpath) {
