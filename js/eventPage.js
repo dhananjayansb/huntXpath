@@ -1,19 +1,18 @@
 chrome.contextMenus.create({
-    "id": "HuntX",
+    "id": "huntX",
     "title": "Get XPath",
     "contexts": ["all"]
 })
 
-let getXPath = (info,tab) => 
-{
+let getXPath = (info, tab) => {
     let msg = {
         type: 'getXPath'
     }
-    chrome.tabs.sendMessage(tab.id,msg,()=>{console.log("msg sent");})
+    chrome.tabs.sendMessage(tab.id, msg, () => {
+        console.log("Message sent");
+    })
+    console.log(tab);
 }
-
-chrome.contextMenus.onClicked.addListener(function(info,tab) 
-{
-    getXPath(info,tab)
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    getXPath(info, tab)
 })
-

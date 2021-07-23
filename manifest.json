@@ -1,32 +1,24 @@
 {
-  "name": "huntX",
-  "description": "Xpath-Finder",
-  "version": "1.0",
-  "manifest_version": 3,
-  "icons": {
-    "128" : "assets/icon/32.png"
-  },
-  "host_permissions": [
-    "<all_urls>"
-  ],
-  "permissions": 
-  [
-    "contextMenus",
-    "tabs",
-    "activeTab",
-    "webNavigation"
-  ],
-  "content_scripts":
-   [
-      {
-        "matches":["<all_urls>"],
-        "run_at":"document_start",
-        "js": ["js/contentScript.js"]
-      }
+    "name": "huntX",
+    "description": "Xpath-Finder",
+    "version": "1.0",
+    "manifest_version": 2,
+    "icons": {
+        "128": "assets/icon/32.png"
+    },
+
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "<all_urls>"
     ],
-    "background":
-    {
-      "service_worker": "js/background.js",
-      "type": "module"
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "run_at": "document_start",
+        "js": ["app/src/contentScript.js"]
+    }],
+    "background": {
+        "persistent": false,
+        "scripts": ["js/eventPage.js"]
     }
 }
