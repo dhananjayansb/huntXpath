@@ -21,8 +21,18 @@ function init() {
 }
 
 function parseDOM() {
-    console.log(targetElement);
-    console.log(targetElement.id);
-    console.log(targetElement.placeholder);
-    console.log(targetElement.type);
+    let tag = targetElement.tagName.toLowerCase();
+    let idValue = targetElement.id;
+    let idPattern = `//*[@id='${idValue}']`;
+    let count = getCountofXPath(idPattern);
+    if (count == 1) {
+        idPattern = `//${tag}[@id='${idValue}']`;
+        console.log(idPattern);
+    }
+}
+
+function getCountofXPath(xpath) {
+    let count = document.evaluate(`count(${xpath})`, document, null, XPathResult.ANY_TYPE, null).numberValue;
+    console.log(count);
+    return count;
 }
