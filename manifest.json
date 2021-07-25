@@ -15,10 +15,11 @@
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "run_at": "document_start",
-        "js": ["app/src/contentScript.js"]
+        "js": ["app/src/contentScript.js", "app/src/textXpath.js"]
     }],
     "background": {
         "persistent": false,
         "scripts": ["js/eventPage.js"]
-    }
+    },
+    "devtools_page": "devtools.html"
 }

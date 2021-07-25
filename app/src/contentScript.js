@@ -25,6 +25,7 @@ function parseDOM() {
     let tag = targetElement.tagName.toLowerCase();
     let attributes = targetElement.attributes;
     addAllXPathAttribute(attributes, tag, targetElement);
+    getTextXpath(targetElement);
     console.log(xpathData);
     xpathData = [];
 }
